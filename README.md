@@ -145,28 +145,7 @@ Each change below is documented independently with:
 
 ---
 
-### 11. ✅ Added File Type and Save Validation in API
-
-💡 **Why**: Uploading non-PDFs or broken files previously failed silently.
-
-🔧 **How**:
-- Checked `.endswith('.pdf')` in API.
-- Verified file exists before running Crew.
-- Raised `HTTPException` if checks failed.
-
----
-
-### 12. ✅ Replaced Hardcoded Text in LLM Calls with User Inputs
-
-💡 **Why**: Old agents and tasks used fixed text (e.g., `{query}` not passed properly).
-
-🔧 **How**:
-- Passed `inputs={"query": ..., "file_path": ...}` to `crew.kickoff()`.
-- Allowed dynamic responses based on user queries and real blood reports.
-
----
-
-### 13. ✅ Removed `max_iter` and `max_rpm` Constraints in Agents
+### 11. ✅ Removed `max_iter` and `max_rpm` Constraints in Agents
 
 💡 **Why**: These limited the model's ability to reason fully.
 
