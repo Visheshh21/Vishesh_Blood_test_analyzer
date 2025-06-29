@@ -179,43 +179,43 @@ Each change below is documented independently with:
 | LLM Connection         | Mocked or broken            | `.env` driven Groq LLM setup                |
 
 ---
-## Quick Setup
-### Prerequisites
+## ⚡ Quick Setup
+### ✅ Prerequisites
 
 ```bash
 Python 3.9+
 Groq API key
 UV installer (recommended)
 ```
-### Installation with UV
+### 🔧 Installation with UV
 ```bash
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 uv tool install crewai
 ```
-# Clone repository
+### 📂 Clone repository
 ```bash
-git clone https://github.com/your-username/blood-test-analyzer.git
+🌐 git clone https://github.com/your-username/blood-test-analyzer.git
 cd blood-test-analyzer
 ```
-# Create and activate virtual environment (recommended)
+### Create and activate virtual environment (recommended)
 ```
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
-# Install dependencies
+### 📦 Install dependencies
 pip install -r requirements.txt
-### Create .env file:
+### 🔐 Create .env file:
 Edit .env with your credentials:
 ```bash
 GROQ_API_KEY=your_api_key_here
 MODEL=groq/llama3-70b-8192  # Recommended model
 ```
 ### 🏃 Running the Application
-- Development Mode
+- 🛠️ Development Mode
 ```bash
 uvicorn main:app --reload
 ```
-- Production Mode
+- 🚢 Production Mode
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
