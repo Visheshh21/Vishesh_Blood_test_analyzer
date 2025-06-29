@@ -207,7 +207,7 @@ Each change below is documented independently with:
 http://localhost:8000
 ```
 
----
+--
 
 ### 🚀 GET /
 Performs a health check.
@@ -217,7 +217,7 @@ Performs a health check.
 }
 ```
 
----
+--
 
 ### 🧾 POST /analyze
 Uploads a blood test report (PDF) and returns detailed AI-driven analysis.
@@ -231,7 +231,7 @@ Uploads a blood test report (PDF) and returns detailed AI-driven analysis.
 | file    | PDF file | ✅       | The PDF blood report          |
 | query   | string   | ❌       | Custom query (optional input) |
 
----
+--
 
 #### 💡 Example
 ```bash
@@ -240,7 +240,7 @@ curl -X POST "http://localhost:8000/analyze" \
   -F "query=Summarize my blood test"
 ```
 
----
+--
 
 #### 📤 Response
 ```json
@@ -251,4 +251,31 @@ curl -X POST "http://localhost:8000/analyze" \
   "file_processed": "blood_report.pdf"
 }
 ```
+---
+## 🤖 Agents Overview
 
+### 🧑‍⚕️ Doctor Agent
+**Role:** Senior Medical Doctor and Blood Test Specialist  
+**Purpose:** Provides clinical interpretation of blood test results with medical accuracy  
+**Tools:** `blood_test_tool` for PDF parsing and analysis 
+
+### 🔍 Verifier Agent
+**Role:** Medical Document Verification  
+**Purpose:** Validates uploaded documents to ensure they are legitimate blood test reports  
+**Tools:** `blood_test_tool` for document structure validation
+
+### 🥗 Nutritionist Agent
+**Role:** Clinical Nutritionist and Dietitian  
+**Purpose:** Identifies nutritional deficiencies and provides evidence-based dietary recommendations  
+**Tools:** Uses context from previous agents (no direct tools)
+
+### 🏋️ Exercise Specialist Agent
+**Role:** Clinical Exercise Physiologist  
+**Purpose:** Recommends safe, personalized exercise plans based on blood test findings
+**Tools:** Uses health context from Doctor and Nutritionist agents
+
+### 📋 Workflow
+- Verification → Document validation and structure check
+- Medical Analysis → Clinical interpretation of biomarkers
+- Nutritional Assessment → Diet recommendations based on deficiencies
+- Exercise Planning → Safe fitness recommendations aligned with health status
