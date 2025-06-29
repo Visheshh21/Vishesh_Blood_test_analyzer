@@ -156,30 +156,7 @@ Each change below is documented independently with:
 
 ---
 
-### 12. ✅ Added Automated File Cleanup
-
-💡 **Why**: Temporary files would otherwise build up.
-
-🔧 **How**:
-- Wrapped analysis in a `try/finally` block.
-- Used `os.remove(file_path)` to delete uploaded file after processing.
-
----
-
-### 13. ✅ Enabled Detailed Logging for Debugging
-
-💡 **Why**: No debug info was available for backend errors.
-
-🔧 **How**:
-- Added `print()` statements for:
-  - File path
-  - Query
-  - Cleanup status
-  - Crew execution errors
-
----
-
-### 14. ✅ Replaced Hardcoded Text in LLM Calls with User Inputs
+### 12. ✅ Replaced Hardcoded Text in LLM Calls with User Inputs
 
 💡 **Why**: Old agents and tasks used fixed text (e.g., `{query}` not passed properly).
 
@@ -189,7 +166,7 @@ Each change below is documented independently with:
 
 ---
 
-### 15. ✅ Removed `max_iter` and `max_rpm` Constraints in Agents
+### 13. ✅ Removed `max_iter` and `max_rpm` Constraints in Agents
 
 💡 **Why**: These limited the model's ability to reason fully.
 
@@ -223,11 +200,55 @@ Each change below is documented independently with:
 | LLM Connection         | Mocked or broken            | `.env` driven Groq LLM setup                |
 
 ---
+## 📡 API Documentation
 
-## 📎 Future Recommendations
+### 📍 Base URL
+```
+http://localhost:8000
+```
 
-- Add PDF summary download (text → PDF)
-- Store processed reports and agent logs
-- Add frontend for form-based interaction
-- Extend support to lab reports beyond blood (e.g., urine, imaging)
+---
+
+### 🚀 GET /
+Performs a health check.
+```json
+{
+  "message": "Blood Test Report Analyser API is running"
+}
+```
+
+---
+
+### 🧾 POST /analyze
+Uploads a blood test report (PDF) and returns detailed AI-driven analysis.
+
+**Content-Type:** `multipart/form-data`
+
+#### 📥 Form Fields
+
+| Field   | Type     | Required | Description                   |
+|---------|----------|----------|-------------------------------|
+| file    | PDF file | ✅       | The PDF blood report          |
+| query   | string   | ❌       | Custom query (optional input) |
+
+---
+
+#### 💡 Example
+```bash
+curl -X POST "http://localhost:8000/analyze" \
+  -F "file=@blood_report.pdf" \
+  -F "query=Summarize my blood test"
+```
+
+---
+
+#### 📤 Response
+```json
+{
+  "status": "success",
+  "query": "Summarize my blood test",
+  "analysis": "[Results from agents]",
+  "file_processed": "blood_report.pdf"
+}
+```
 
