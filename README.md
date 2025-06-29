@@ -279,3 +279,22 @@ curl -X POST "http://localhost:8000/analyze" \
 - Medical Analysis → Clinical interpretation of biomarkers
 - Nutritional Assessment → Diet recommendations based on deficiencies
 - Exercise Planning → Safe fitness recommendations aligned with health status
+
+## 🧪 Testing
+
+You can test the API using **Postman**:
+
+### Endpoint
+**Method:** `POST`  
+**URL:** `http://localhost:8000/analyze`
+
+### Body (form-data)
+| Key   | Type | Description                     |
+|-------|------|---------------------------------|
+| file  | File | Upload the PDF file to analyze |
+| query | Text | Enter your question or prompt  |
+
+Make sure to set the **Body type to `form-data`** in Postman and correctly upload your file along with the query.
+
+### Sample Output
+![WhatsApp Image 2025-06-29 at 02 35 15_c075e1d7](https://github.com/user-attachments/assets/2d91acf9-0909-411f-9438-210b9080c6ad)
